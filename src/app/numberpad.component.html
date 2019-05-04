@@ -1,0 +1,30 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class = "lock-code-container">
+  <div style="text-align:center" class="container">
+    <div class= "row number-pad" >
+      <div class= "user-input">
+        <input type="number" name="numberField"
+        [(ngModel)]= "InputModel" value="{{currentPassword}}"
+        (keyup.enter)= "storeUserInput($event)"
+        ngDefaultControl>
+      </div>
+
+      <section class = "number-inputs" class="container-fluid">
+      <div *ngFor = "let number of randomArr; let i = index">
+          <button *ngIf="number != -1; else nonum" class = "col-md-2" name="numberField" name="numberField"
+          (click)="typedNumber(number);" [(ngModel)]= "InputModel" ngDefaultControl>
+            <span>{{ number }}</span>
+          </button>
+          <ng-template #nonum>
+            <button class = "col-md-2" name="numberField" name="numberField"
+            (click)="typedNumber(number);"
+            [(ngModel)]= "InputModel" ngDefaultControl disabled>
+              <span style="opacity:0;">{{ number }}</span>
+            </button>
+          </ng-template>
+      </div>
+        <button class="btn" (click)= compareResults()>OK</button>
+      </section>
+    </div>
+  </div>
+</div>
