@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-numberpad',
   templateUrl: './numberpad.component.html'
 })
+
 export class NumberPadComponent implements OnInit {
   arr: any = [];
   randomNum: any;
@@ -20,17 +21,19 @@ export class NumberPadComponent implements OnInit {
     this.randomNum = this.shuffle(this.arr);
   }
 
+// Store the typed string
   typedNumber(numberEntered: any) {
     this.currentPassword = this.currentPassword + numberEntered;
   }
 
+// Store the numbers clicked by the user as  astring
   storeUserInput(event: any) {
-    console.log(event.target.value);
     this.userPassword = event.target.value;
+    this.InputModel = null;
   }
 
+// Compare the two strings
   compareResults() {
-    console.log(this.currentPassword, this.userPassword);
     if (this.currentPassword === this.userPassword) {
       alert('Matches');
     } else {
